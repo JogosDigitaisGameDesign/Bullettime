@@ -5,13 +5,13 @@ public class PlayerControl : MonoBehaviour
 {
 
     [SerializeField] private GameInput gameInput = new GameInput();
-    private MoveControl moveCotnrol = null;
+    private MoveControl moveControl;
 
-    private float inputHorizontal = 0;
-    private float inputVeritical = 0;
+    private float inputForward = 0;
+    private float inputTurn = 0;
+    private float inputRotationY = 0;
     private float inputJump = 0;
     private float inputRun = 0;
-    private MoveControl moveControl;
 
     // Use this for initialization
     void Start()
@@ -21,25 +21,19 @@ public class PlayerControl : MonoBehaviour
 
     private void GetInputs()
     {
-        inputHorizontal = gameInput.Horizontal;
-        inputVeritical = gameInput.Vertical;
+        inputForward = gameInput.Forward;
+        inputTurn = gameInput.Turn;
+        inputRotationY = gameInput.RotationY;
         inputJump = gameInput.Jump;
         inputRun = gameInput.Run;
-
-        if (inputRun >= 0)
-            moveControl.Speed = moveControl.SpeedRun;
-        else
-            moveControl.Speed = moveControl.SpeedWalk;
     }
 
     // Update is called once per frame
     void Update()
     {
         GetInputs();
-
-        if (inputHorizontal <= 0)
-            moveControl.Stop();
-        else
-            moveControl.Move();
+        moveControl.Jump(inputJump);
+        moveControl.Move(inputForward, inputTurn, inputRotationY, inputRun);
     }
+
 }
