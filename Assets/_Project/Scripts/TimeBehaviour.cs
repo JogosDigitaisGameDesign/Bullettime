@@ -1,7 +1,15 @@
+using UnityEngine;
+
 public class TimeBehaviour : MonoBehaviour
 {
     private Rigidbody r = null;
     private float _localTimeScale = 1.0f;
+
+    void Start() {
+        
+    }
+
+    
     public float localTimeScale
     {
         get
@@ -35,7 +43,8 @@ public class TimeBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         // Counter gravity
-        if (r == null) r = GetComponent<Rigidbody>();
+        if (r == null)
+            r = GetComponent<Rigidbody>();
         if (r != null)
         {
             r.AddForce(-Physics.gravity + (Physics.gravity * (_localTimeScale * _localTimeScale)), ForceMode.Acceleration);

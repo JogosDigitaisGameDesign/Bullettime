@@ -9,6 +9,8 @@ public class TrapdoorTest : MonoBehaviour {
     [Header("Time Influence")]
     [SerializeField] [Range(0, 2)] private float timeInfluence = 1;
     [SerializeField] private bool isTimeInfluenceTest = false;
+    [SerializeField] private bool isTimeScale = false;
+    [SerializeField] private float timeScale = 1;
 
 
     // Use this for initialization
@@ -27,6 +29,13 @@ public class TrapdoorTest : MonoBehaviour {
         {
             isTimeInfluenceTest = false;
             trapDoor.TimeInfluence = timeInfluence;
+        }
+
+        if (isTimeScale)
+        {
+            isTimeScale = false;
+            Time.timeScale = timeScale;
+            trapDoor.TimeInfluence = Time.timeScale;
         }
     }
 }
