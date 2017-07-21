@@ -14,8 +14,9 @@ public class PlayerControl : MonoBehaviour
     private float inputRun = 0;
     private float inputTimeIncrease = 0;
     private float inputTimeDecrease = 0;
-    [SerializeField]
-    private float timeScale = 0;
+    [SerializeField] private float timeScale = 0;
+    public GameObject timeSense = null;
+    private float inputActivateTimeSense = 0;
 
     // Use this for initialization
     void Start()
@@ -33,6 +34,7 @@ public class PlayerControl : MonoBehaviour
         inputRun = gameInput.Run;
         inputTimeIncrease = gameInput.TimeIncrease;
         inputTimeDecrease = gameInput.TimeDecrease;
+        inputActivateTimeSense = gameInput.ActivateTimeSense;
     }
 
     // Update is called once per frame
@@ -51,6 +53,9 @@ public class PlayerControl : MonoBehaviour
 
         moveControl.Jump(inputJump);
         moveControl.Move(inputForward, inputTurn, inputRotationY, inputRun);
+
+        if (Input.GetKeyDown(KeyCode.Q)) //TODO: ALTERAR
+            moveControl.ativarBolha(timeSense, inputActivateTimeSense);
     }
 
 }

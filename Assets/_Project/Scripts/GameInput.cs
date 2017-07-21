@@ -11,12 +11,15 @@ public class GameInput
     [SerializeField] private string run = "Run";
     [SerializeField] private string timeIncrease = "Time Increase";
     [SerializeField] private string timeDecrease = "Time Decrease";
+    [SerializeField] private string activateTimeSense = "Activate Time Sense";
 
     public float Forward { get { return Input.GetAxis(forward); } }
     public float Turn { get { return Input.GetAxis(turn); } }
     public float RotationY { get { return Input.GetAxis(rotationY); } }
     public float Jump { get { return Input.GetAxis(jump); } }
     public float Run { get { return Input.GetAxis(run); } }
-    public float TimeIncrease{get { return Input.GetAxis(timeIncrease); }}
+    public float TimeIncrease { get { return Input.GetAxis(timeIncrease); }}
     public float TimeDecrease { get { return Input.GetAxis(timeDecrease); }}
+
+    public float ActivateTimeSense { get { return Input.GetAxis(activateTimeSense); }}
 }

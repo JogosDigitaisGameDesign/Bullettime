@@ -1,18 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TimeControl : MonoBehaviour {
+public class TimeControl : MonoBehaviour
+{
+    //private Time time;
 
-    private Time time;
+    // Use this for initialization
+    void Start()
+    {
 
+    }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        	
-	}
+    // Update is called once per frame
+    void Update()
+    {
+    }
+
+    private void GetTimeSenseInput()
+    {
+    }
 }

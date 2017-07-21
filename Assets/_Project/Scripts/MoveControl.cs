@@ -6,11 +6,16 @@ using System;
 public class MoveControl : MonoBehaviour
 {
     private CharacterController charControl = null;
-    [SerializeField] private float speedWalk = 10;
-    [SerializeField] private float speedRun = 20;
-    [SerializeField] private float speedRotation = 1;
-    [SerializeField] private float speedJump = 30;
-    [SerializeField] private float gravityMultiply = 1;
+    [SerializeField]
+    private float speedWalk = 10;
+    [SerializeField]
+    private float speedRun = 20;
+    [SerializeField]
+    private float speedRotation = 1;
+    [SerializeField]
+    private float speedJump = 30;
+    [SerializeField]
+    private float gravityMultiply = 1;
     private float speedActual = 0;
     private Vector3 speed = Vector2.zero;
     //private bool isJump = false;
@@ -101,8 +106,15 @@ public class MoveControl : MonoBehaviour
                 //isJump = true;
             }
         }
-            //Debug.Log(distancia);
-            speed.y += Physics.gravity.y * gravityMultiply * Time.deltaTime;
+        //Debug.Log(distancia);
+        speed.y += Physics.gravity.y * gravityMultiply * Time.deltaTime;
     }
 
+    public void ativarBolha(GameObject timeSense, float inputActivateTimeSense)
+    {
+        if (timeSense.activeSelf)
+            timeSense.SetActive(false);
+        else if (timeSense.activeSelf == false)
+            timeSense.SetActive(true);
+    }
 }
