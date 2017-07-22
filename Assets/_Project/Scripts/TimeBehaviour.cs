@@ -32,22 +32,24 @@ public class TimeBehaviour : MonoBehaviour
             _localTimeScale = value;
         }
     }
-    public float localDeltaTime
-    {
-        get
-        {
-            return Time.deltaTime * Time.timeScale * _localTimeScale;
-        }
-    }
+
+
+    //public float localDeltaTime
+    //{
+    //    get
+    //    {
+    //        return Time.deltaTime * Time.timeScale * _localTimeScale;
+    //    }
+    //}
 
     void FixedUpdate()
     {
         // Counter gravity
-        if (r == null)
-            r = GetComponent<Rigidbody>();
-        if (r != null)
-        {
-            r.AddForce(-Physics.gravity + (Physics.gravity * (_localTimeScale * _localTimeScale)), ForceMode.Acceleration);
-        }
+        //if (r == null)
+        //    r = GetComponent<Rigidbody>();
+        //if (r != null)
+        //{
+        //    r.AddForce(-Physics.gravity + (Physics.gravity * (_localTimeScale * _localTimeScale)), ForceMode.Acceleration);
+        //}
     }
 }

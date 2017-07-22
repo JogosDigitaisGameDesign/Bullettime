@@ -14,22 +14,22 @@ public class PlayerControl : MonoBehaviour
     private float inputRun = 0;
     private float inputTimeIncrease = 0;
     private float inputTimeDecrease = 0;
-    [SerializeField] private float timeScale = 0;
+
     public GameObject timeSense = null;
-    private float inputActivateTimeSense = 0;
+    private bool inputActivateTimeSense = false;
 
     // Use this for initialization
     void Start()
     {
-        timeScale = Time.timeScale;
         moveControl = GetComponent<MoveControl>();
+        timeSense.SetActive(false);
     }
 
     private void GetInputs()
     {
         inputForward = gameInput.Forward;
         inputTurn = gameInput.Turn;
-        inputRotationY = gameInput.RotationY;
+        //inputRotationY = gameInput.RotationY;
         inputJump = gameInput.Jump;
         inputRun = gameInput.Run;
         inputTimeIncrease = gameInput.TimeIncrease;
@@ -42,20 +42,28 @@ public class PlayerControl : MonoBehaviour
     {
         GetInputs();
 
-        if (inputTimeIncrease > 0)// && (Time.timeScale + inputTimeIncrease > 0))
-            Time.timeScale += inputTimeIncrease * 0.01f;
-        else if (inputTimeDecrease > 0)// && (Time.timeScale - inputTimeDecrease) > 0)
-            Time.timeScale -= inputTimeDecrease * 0.01f;
-        if (timeScale < 0)
-            timeScale = 0;
-
-        timeScale = Time.timeScale;
+        //if (inputTimeIncrease > 0)
+        //{
+        //    timeScale += inputTimeIncrease * 0.01f;
+        //}
+        //else 
+        if (inputTimeDecrease > 0)
+            timeSense.SetActive(true);
+        else
+            timeSense.SetActive(false);
 
         moveControl.Jump(inputJump);
         moveControl.Move(inputForward, inputTurn, inputRotationY, inputRun);
-
-        if (Input.GetKeyDown(KeyCode.Q)) //TODO: ALTERAR
-            moveControl.ativarBolha(timeSense, inputActivateTimeSense);
     }
 
+
+        //public void ativarBolha(GameObject timeSense)
+        //{
+
+
+        //    if (timeSense.activeSelf)
+        //        timeSense.SetActive(false);
+        //    else if (timeSense.activeSelf == false)
+        //        timeSense.SetActive(true);
+        //}
 }

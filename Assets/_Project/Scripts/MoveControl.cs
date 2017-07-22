@@ -53,7 +53,8 @@ public class MoveControl : MonoBehaviour
     public void Move(float inputForward, float inputTurn, float inputRotationY, float inputRun)
     {
         // Efetuar movimentação e rotação em Y
-        transform.Rotate(0, inputRotationY * speedRotation, 0);
+        //transform.Rotate(0, inputRotationY * speedRotation, 0);
+        transform.Rotate(0, inputTurn * speedRotation, 0);
 
         // Efetuar rotação em X
         //orientacao.Rotate(-entVirarX * speedRotation, 0, 0);
@@ -76,7 +77,7 @@ public class MoveControl : MonoBehaviour
             auxSpeed.x = 1; // inputTurn * speedActual;
         }
         speed.z = auxSpeed.z * inputForward * speedActual;
-        speed.x = auxSpeed.x * inputTurn * speedActual;
+        //speed.x = auxSpeed.x * inputTurn * speedActual;
 
         charControl.Move(transform.TransformDirection(speed * Time.deltaTime));
     }
@@ -110,11 +111,5 @@ public class MoveControl : MonoBehaviour
         speed.y += Physics.gravity.y * gravityMultiply * Time.deltaTime;
     }
 
-    public void ativarBolha(GameObject timeSense, float inputActivateTimeSense)
-    {
-        if (timeSense.activeSelf)
-            timeSense.SetActive(false);
-        else if (timeSense.activeSelf == false)
-            timeSense.SetActive(true);
-    }
+
 }

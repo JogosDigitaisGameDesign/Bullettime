@@ -34,8 +34,8 @@ public class TrapdoorTest : MonoBehaviour {
         if (isTimeScale)
         {
             isTimeScale = false;
-            Time.timeScale = timeScale;
-            trapDoor.TimeInfluence = Time.timeScale;
+            //Time.timeScale = timeScale;
+            //trapDoor.TimeInfluence = Time.timeScale;
         }
     }
 }

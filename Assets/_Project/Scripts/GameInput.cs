@@ -21,5 +21,5 @@ public class GameInput
     public float TimeIncrease { get { return Input.GetAxis(timeIncrease); }}
     public float TimeDecrease { get { return Input.GetAxis(timeDecrease); }}
 
-    public float ActivateTimeSense { get { return Input.GetAxis(activateTimeSense); }}
+    public bool ActivateTimeSense { get { return Input.GetKeyDown(KeyCode.Q); } } // Input.GetAxis(activateTimeSense); }}
 }

@@ -47,6 +47,7 @@ public class Trapdoor : ITrap {
 
     public void Run()
     {
+        //TimeInfluence = Time.timeScale;
         if (IsActivated)
         {
             try

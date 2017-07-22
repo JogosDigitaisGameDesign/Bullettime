@@ -25,8 +25,9 @@ GameObject:
   - 82: {fileID: 82000014191233850}
   - 54: {fileID: 54000012129049290}
   - 114: {fileID: 114000010041649998}
+  - 114: {fileID: 114000014009133572}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: ArrowTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,3 +202,14 @@ MonoBehaviour:
   directionRespawnPoint: 1
   touchDestroy: 1
   arrowDirection: {x: 0, y: 0, z: 1}
+--- !u!114 &114000014009133572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010081333862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a9027d0e4bc194b874783236ca80b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
