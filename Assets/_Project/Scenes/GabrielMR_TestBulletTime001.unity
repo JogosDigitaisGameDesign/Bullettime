@@ -1497,12 +1497,12 @@ Prefab:
     - target: {fileID: 114000010739797868, guid: 9a759253f7317944ea4555124f42bb39,
         type: 2}
       propertyPath: speedOpen
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114000010739797868, guid: 9a759253f7317944ea4555124f42bb39,
         type: 2}
       propertyPath: speedClose
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a759253f7317944ea4555124f42bb39, type: 2}
