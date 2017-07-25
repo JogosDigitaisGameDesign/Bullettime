@@ -18,6 +18,11 @@ public class PlayerControl : MonoBehaviour
     public GameObject timeSense = null;
     private bool inputActivateTimeSense = false;
 
+    public GameObject bullet;
+
+    public float fireRate = 1f;
+    public float lastShot = 0.0f;
+
     // Use this for initialization
     void Start()
     {
@@ -54,16 +59,33 @@ public class PlayerControl : MonoBehaviour
 
         moveControl.Jump(inputJump);
         moveControl.Move(inputForward, inputTurn, inputRotationY, inputRun);
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            Fire();
+        }
+            
+
+
+    }
+
+    void Fire()
+    {
+        if (Time.time > fireRate + lastShot)
+        {
+            Instantiate(bullet, transform.position, Quaternion.identity);
+            lastShot = Time.time;
+        }
     }
 
 
-        //public void ativarBolha(GameObject timeSense)
-        //{
+    //public void ativarBolha(GameObject timeSense)
+    //{
 
 
-        //    if (timeSense.activeSelf)
-        //        timeSense.SetActive(false);
-        //    else if (timeSense.activeSelf == false)
-        //        timeSense.SetActive(true);
-        //}
+    //    if (timeSense.activeSelf)
+    //        timeSense.SetActive(false);
+    //    else if (timeSense.activeSelf == false)
+    //        timeSense.SetActive(true);
+    //}
 }

@@ -1497,7 +1497,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011343337406, guid: 951c1c3edf129404ca3e8ebfc69050c5, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114000011741568400, guid: 951c1c3edf129404ca3e8ebfc69050c5,
         type: 2}
@@ -1841,7 +1841,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!208 &778225540
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1884,7 +1884,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1001 &822237339
 Prefab:
   m_ObjectHideFlags: 0
@@ -2760,7 +2760,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011550453748, guid: ca501fb8ad11239449924f99b3258ede, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1000011389308206, guid: ca501fb8ad11239449924f99b3258ede, type: 2}
       propertyPath: m_Name
@@ -3690,6 +3690,17 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010296698778, guid: a1776399214f2d346af0ee4b847efd7a,
+        type: 2}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1000012344793674, guid: b86ace8adc6592043bf3a529153d182d,
+        type: 2}
+    - target: {fileID: 114000010296698778, guid: a1776399214f2d346af0ee4b847efd7a,
+        type: 2}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54000012943179848, guid: a1776399214f2d346af0ee4b847efd7a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a1776399214f2d346af0ee4b847efd7a, type: 2}
@@ -3978,7 +3989,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!4 &1437864455 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010138130594, guid: 7be24be71d3641a42b00516fe50ae647,

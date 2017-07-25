@@ -8,6 +8,9 @@ public class TimeSense : MonoBehaviour {
     [SerializeField] [Range(0.01f, 0.9f)] private float incTime = 0.01f;
     [SerializeField] [Range(0.01f, 0.9f)] private float minTime = 0.1f;
 
+    float MoveSpeed = 4f;
+    bool move = true;
+    float timer = 3f;
 
     // Use this for initialization
     void Start () {
@@ -16,12 +19,19 @@ public class TimeSense : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        if(move)
+            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+
+        if (timer < 0)
+            Destroy(gameObject);
+
+        timer -= Time.deltaTime;
+    }
 
 
     private void OnTriggerEnter(Collider other)
     {
+
         checkTrap(other, timeScale);
 
         checkEnemy(other, timeScale);
@@ -51,6 +61,10 @@ public class TimeSense : MonoBehaviour {
     private void checkEnemy(Collider other, float time)
     {
         if (other.tag == "Enemy")
+        {
             other.GetComponent<EnemyMov>().MoveSpeed = time;
+            move = false;
+        }
+            
     }
 }
