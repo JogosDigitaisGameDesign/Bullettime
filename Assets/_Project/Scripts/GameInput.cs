@@ -22,4 +22,5 @@ public class GameInput
     public float TimeDecrease { get { return Input.GetAxis(timeDecrease); }}
 
     public bool ActivateTimeSense { get { return Input.GetKeyDown(KeyCode.Q); } } // Input.GetAxis(activateTimeSense); }}
+    public bool Shoot { get { return Input.GetMouseButtonDown(0); } }
 }

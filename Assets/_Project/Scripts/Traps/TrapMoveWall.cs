@@ -2,158 +2,75 @@
 using System.Collections;
 using System;
 
-public class TrapMoveWall : ITrap {
-    [SerializeField] private float damage = 1;
-    [SerializeField] private bool autoReturn = true;
+public class TrapMoveWall : ITrap
+{
+    [SerializeField]
+    private Transform wall;
+    [SerializeField]
+    private Transform target;
+    private Vector3 pointA;
+
+    [SerializeField]
+    private float damage = 1;
+    [SerializeField]
+    private bool autoReturn = true;
     private bool isMove = true;
 
-    [SerializeField] private float speed = 100f;
-    
+    [SerializeField]
+    private float speedGo = 10f;
+    [SerializeField]
+    private float speedReturn = 5f;
+    private float speed = 0;
+    [SerializeField] private float distanceLimit = 0.1f;
+
     private Vector3 forward = Vector3.zero;
 
-    // Use this for initialization
-    void Start () {
+    void Awake()
+    {
         
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+
+
+    // Use this for initialization
+    void Start()
+    {
+        pointA = wall.position;
+        speed = speedGo;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         // Audio
         //executarAudio();
-        Run();
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        string auxTag = other.gameObject.tag;
-
-        if (auxTag == "Player")
-        {
-            PlayerControl player = other.gameObject.GetComponent<PlayerControl>();
-            //causarDano(player);
-        }
-    }
-
-    private void OnCollisionStay(Collision outro)
-    {
-        string auxTag = outro.gameObject.tag;
-
-        if (auxTag == "Player")
-        {
-            PlayerControl player = outro.gameObject.GetComponent<PlayerControl>();
-            //causarDano(player);
-        }
-    }
-
-    private void OnCollisionExit(Collision outro)
-    {
-        string auxTag = outro.gameObject.tag;
-
-        if (auxTag == "Player")
-        {
-            //encostaJogador = false;
-        }
-    }
-
-
-    private void DamagePlayer(PlayerControl player)
-    {
-        //player.decrementarHP(damage);
-    }
-
-    private void Move()
-    {
-
-    }
-
-    private void desativarArmadilha()
-    {
-        //if (trocarSentido)
-        //{
-        //    isMove = true;
-        //    deslocamentoZ = 0;
-        //    deslocamentoMax = 0;
-        //    positivo = true;
-        //    timerMove = 0;
-        //    trocarSentido = false;
-        //    forward = Vector3.zero;
-        //    encostaJogador = false;
-        //    IsActivated = false;
-
-        //    iniciar();
-        //}
-    }
-public override void Begin()
-    {
-        base.Begin();
-        IsRespawn = false;
-
-        forward = transform.forward;
-        //bloquearEixosRB();
-
-        //deslocamentoZ = valorDirecaoVetor();
-        //positivo = sentido();
-
-        //if (positivo)
-        //{
-        //    deslocamentoMax = deslocamentoZ + distanciaMaxima;
-        //}
-        //else
-        //{
-        //    deslocamentoMax = deslocamentoZ - distanciaMaxima;
-        //}
-    }
-
-
-
-    public void Run()
-    {
+        //Run();
         if (IsActivated)
         {
-            
+            if (speed == speedGo)
+            {
+                float distance = Vector3.Distance(wall.position, target.position);
+                if (distance > distanceLimit)
+                    wall.position = Vector3.Lerp(wall.position, target.position, (speed * TimeInfluence) * Time.deltaTime);
+                else
+                    speed = speedReturn;
+            }
+            else
+            {
+                if (autoReturn)
+                {
+                    float distance = Vector3.Distance(wall.position, pointA);
+                    if (distance > distanceLimit)
+                        wall.position = Vector3.Lerp(wall.position, pointA, (speed * TimeInfluence) * Time.deltaTime);
+                    else
+                    {
+                        speed = speedGo;
+                        IsActivated = false;
+                    }
+                }
+                else
+                    IsActivated = false;
+            }
         }
-    }
-
-
-    private void retornar()
-    {
-        //trocarSentido = true;
-        //isMove = true;
-        //IsRespawn = false;
-        //forward = transform.forward * -1;
-
-        //deslocamentoZ = valorDirecaoVetor();
-        //positivo = sentido();
-
-        //if (positivo)
-        //{
-        //    deslocamentoMax = deslocamentoZ + distanciaMaxima;
-        //}
-        //else
-        //{
-        //    deslocamentoMax = deslocamentoZ - distanciaMaxima;
-        //}
-    }
-
-
-    private float DirectionForwardValue()
-    {
-        if (forward.x != 0)
-            return transform.localPosition.x;
-        else if (forward.y != 0)
-            return transform.localPosition.y;
-        else if (forward.z != 0)
-            return transform.localPosition.z;
-        return 0;
-    }
-
-
-    private bool Orientation()
-    {
-        float value = forward.x + forward.y + forward.z;
-
-        if (value >= 0)
-            return true;
-        return false;
     }
 }

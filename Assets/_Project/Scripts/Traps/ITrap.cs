@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(AudioSource))]
-public abstract class ITrap : MonoBehaviour {
+public abstract class ITrap : TimeComponent {
 
     [SerializeField] private AudioClip soundFX;
     private AudioSource audioSource;

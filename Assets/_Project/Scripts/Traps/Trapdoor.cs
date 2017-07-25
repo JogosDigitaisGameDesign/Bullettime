@@ -19,7 +19,7 @@ public class Trapdoor : ITrap {
     private float actualAngle = 1;
     private bool closeControl = false;
 
-    public float TimeInfluence { get { return timeInfluence; }
+    public override float TimeInfluence { get { return timeInfluence; }
         set { timeInfluence = value;
             speedOp = speedOpen * timeInfluence;
             speedCl = speedClose * timeInfluence;

@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] private GameInput gameInput = new GameInput();
     private MoveControl moveControl;
+    private Weapon weapon;
 
     private float inputForward = 0;
     private float inputTurn = 0;
@@ -17,6 +18,7 @@ public class PlayerControl : MonoBehaviour
 
     public GameObject timeSense = null;
     private bool inputActivateTimeSense = false;
+    private bool inputShoot = false;
 
     public GameObject bullet;
 
@@ -27,6 +29,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         moveControl = GetComponent<MoveControl>();
+        weapon = GetComponent<Weapon>();
         timeSense.SetActive(false);
     }
 
@@ -39,7 +42,9 @@ public class PlayerControl : MonoBehaviour
         inputRun = gameInput.Run;
         inputTimeIncrease = gameInput.TimeIncrease;
         inputTimeDecrease = gameInput.TimeDecrease;
+
         inputActivateTimeSense = gameInput.ActivateTimeSense;
+        inputShoot = gameInput.Shoot;
     }
 
     // Update is called once per frame
@@ -52,17 +57,20 @@ public class PlayerControl : MonoBehaviour
         //    timeScale += inputTimeIncrease * 0.01f;
         //}
         //else 
-        if (inputTimeDecrease > 0)
-            timeSense.SetActive(true);
-        else
-            timeSense.SetActive(false);
+        //if (inputTimeDecrease > 0)
+        //    timeSense.SetActive(true);
+        //else
+        //    timeSense.SetActive(false);
+
+        if (inputShoot)
+            weapon.efetuarDisparo();
 
         moveControl.Jump(inputJump);
         moveControl.Move(inputForward, inputTurn, inputRotationY, inputRun);
 
         if (Input.GetKey(KeyCode.Q))
         {
-            Fire();
+            //Fire();
         }
             
 
