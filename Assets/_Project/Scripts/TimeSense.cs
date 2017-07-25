@@ -24,6 +24,8 @@ public class TimeSense : MonoBehaviour {
     {
         checkTrap(other, timeScale);
 
+        checkEnemy(other, timeScale);
+
         TimeBehaviour tb = other.gameObject.GetComponent<TimeBehaviour>();
         if (tb != null)
             tb.localTimeScale = timeScale;
@@ -33,6 +35,8 @@ public class TimeSense : MonoBehaviour {
     {
         checkTrap(other, 1);
 
+        checkEnemy(other, 4);
+
         TimeBehaviour tb = other.gameObject.GetComponent<TimeBehaviour>();
         if (tb != null)
             tb.localTimeScale = 1;
@@ -41,9 +45,12 @@ public class TimeSense : MonoBehaviour {
     private void checkTrap(Collider other, float time)
     {
         if (other.tag == "Trap")
-        {
-            Debug.Log(other.tag + "");
             other.GetComponent<Door>().TimeInfluence = time;
-        }
+    }
+
+    private void checkEnemy(Collider other, float time)
+    {
+        if (other.tag == "Enemy")
+            other.GetComponent<EnemyMov>().MoveSpeed = time;
     }
 }
