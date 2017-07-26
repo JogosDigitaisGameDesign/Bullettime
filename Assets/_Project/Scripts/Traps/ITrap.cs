@@ -25,6 +25,11 @@ public abstract class ITrap : TimeComponent {
         audioSource = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+        base.Update();
+    }
+
     public void PlayAudio()
     {
         if (IsActivated)

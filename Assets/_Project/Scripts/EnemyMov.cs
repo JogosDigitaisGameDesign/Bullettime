@@ -29,6 +29,7 @@ public class EnemyMov : TimeComponent
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         transform.LookAt(player);
         if (Vector3.Distance(transform.position, player.position) >= MinDist)
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
@@ -36,7 +37,7 @@ public class EnemyMov : TimeComponent
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Bubble")
             moveSpeed = 4;
     }
 

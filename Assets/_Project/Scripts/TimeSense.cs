@@ -13,7 +13,7 @@ public class TimeSense : MonoBehaviour {
     //bool move = true;
     float timer = 3f;
 
-    private List<TimeComponent> listTimeComponents = new List<TimeComponent>();
+    //private List<TimeComponent> listTimeComponents = new List<TimeComponent>();
 
     // Use this for initialization
     void Start () {
@@ -34,8 +34,15 @@ public class TimeSense : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Trap")
+        {
+            Debug.Log("Trap");
+        }
 
-        TimeInfluenceActivated(other, timeScale);
+        if (TimeInfluenceActivated(other, timeScale))
+        {
+            other.GetComponent<TimeComponent>().TimeSense = this;
+        }
         //checkArrow(other, timeScale);
         //checkTrap(other, timeScale);
         //checkEnemy(other, timeScale);
@@ -47,6 +54,11 @@ public class TimeSense : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
+
+        if (other.tag == "Trap")
+        {
+            Debug.Log("Trap");
+        }
         TimeInfluenceActivated(other, 1);
         //checkArrow(other, 1);
         //checkTrap(other, 1);
@@ -62,18 +74,16 @@ public class TimeSense : MonoBehaviour {
         bool ok = false;
         for (int i = 0; i < tags.Length; i++)
         {
-            if (other.tag == "Arrow")
-                Debug.Log("Aqui!!!");
             if (other.tag == tags[i])
             {
                 TimeComponent timeComponent = other.GetComponent<TimeComponent>();
-                int idOpp = other.transform.GetInstanceID();
-                bool foundID = searchID(timeComponent);
-                if (!foundID)
-                {
+
+                //bool foundID = searchID(timeComponent);
+                //if (!foundID)
+                //{
                     timeComponent.TimeInfluence = time;
-                    listTimeComponents.Add(timeComponent); //other.transform.GetInstanceID());
-                }
+                    // listTimeComponents.Add(timeComponent); //other.transform.GetInstanceID());
+                //}
                 ok = true;
                 break;
             }
@@ -86,32 +96,32 @@ public class TimeSense : MonoBehaviour {
         bool found = false;
 
         // Verificar se está na lista
-        found = false; // se for listOpponents.Count == 0, adiciona
-        if (listTimeComponents.Count != 0)
-        {
-            foreach (TimeComponent oth in listTimeComponents)
-            {
-                if (oth != null)
-                {
-                    if (other.transform.GetInstanceID() == oth.transform.GetInstanceID())
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-            }
-        }
+        //found = false; // se for listOpponents.Count == 0, adiciona
+        //if (listTimeComponents.Count != 0)
+        //{
+        //    foreach (TimeComponent oth in listTimeComponents)
+        //    {
+        //        if (oth != null)
+        //        {
+        //            if (other.transform.GetInstanceID() == oth.transform.GetInstanceID())
+        //            {
+        //                found = true;
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
         return found;
     }
 
     public void Release()
     {
 
-        foreach (TimeComponent tComp in listTimeComponents)
-        {
-            tComp.TimeInfluence = 1;
-        }
-        
+        //foreach (TimeComponent tComp in listTimeComponents)
+        //{
+        //    tComp.TimeInfluence = 1;
+        //}
+
     }
 
     //private void checkTrap(Collider other, float time)

@@ -16,11 +16,11 @@ public class PlayerControl : MonoBehaviour
     private float inputTimeIncrease = 0;
     private float inputTimeDecrease = 0;
 
-    public GameObject timeSense = null;
+    public TimeSense timeSense = null;
     private bool inputActivateTimeSense = false;
     private bool inputShoot = false;
 
-    public GameObject bullet;
+    //public GameObject bullet;
 
     public float fireRate = 1f;
     public float lastShot = 0.0f;
@@ -30,7 +30,7 @@ public class PlayerControl : MonoBehaviour
     {
         moveControl = GetComponent<MoveControl>();
         weapon = GetComponent<Weapon>();
-        timeSense.SetActive(false);
+        timeSense.gameObject.SetActive(false);
     }
 
     private void GetInputs()
@@ -58,9 +58,12 @@ public class PlayerControl : MonoBehaviour
         //}
         //else 
         if (inputTimeDecrease > 0)
-            timeSense.SetActive(true);
+            timeSense.gameObject.SetActive(true);
         else
-            timeSense.SetActive(false);
+        {
+            //timeSense.Release();
+            timeSense.gameObject.SetActive(false);
+        }
 
         if (inputShoot)
             weapon.efetuarDisparo();
@@ -77,14 +80,14 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    void Fire()
-    {
-        if (Time.time > fireRate + lastShot)
-        {
-            Instantiate(bullet, transform.position, Quaternion.identity);
-            lastShot = Time.time;
-        }
-    }
+    //void Fire()
+    //{
+    //    if (Time.time > fireRate + lastShot)
+    //    {
+    //        Instantiate(bullet, transform.position, Quaternion.identity);
+    //        lastShot = Time.time;
+    //    }
+    //}
 
 
     //public void ativarBolha(GameObject timeSense)

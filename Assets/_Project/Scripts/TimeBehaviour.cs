@@ -42,6 +42,11 @@ public class TimeBehaviour : TimeComponent
     //    }
     //}
 
+   void Update()
+    {
+        base.Update();
+    }
+
     void FixedUpdate()
     {
         // Counter gravity
