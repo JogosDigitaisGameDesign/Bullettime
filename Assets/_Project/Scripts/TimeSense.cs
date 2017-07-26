@@ -91,10 +91,13 @@ public class TimeSense : MonoBehaviour {
         {
             foreach (TimeComponent oth in listTimeComponents)
             {
-                if (other.transform.GetInstanceID() == oth.transform.GetInstanceID())
+                if (oth != null)
                 {
-                    found = true;
-                    break;
+                    if (other.transform.GetInstanceID() == oth.transform.GetInstanceID())
+                    {
+                        found = true;
+                        break;
+                    }
                 }
             }
         }

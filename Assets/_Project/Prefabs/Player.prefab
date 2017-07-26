@@ -605,6 +605,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f7cd266f7a19c545a9d801371762192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tags:
+  - Trap
+  - Enemy
+  - Arrow
   timeScale: 0.2
   incTime: 0.01
   minTime: 0.1
@@ -635,7 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dba39b0002f85742986f1a057d665c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prjPrefab: {fileID: 54000012129049290, guid: 2e53a9648aaa9404190fac21809641a0, type: 2}
+  prjPrefab: {fileID: 54000013156253494, guid: 7a66777f495f19c47bb5b59e7c2d86a7, type: 2}
   launchPoint: {fileID: 4000012667285540}
   speed: 30
 --- !u!124 &124000011128403878

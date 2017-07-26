@@ -28,7 +28,7 @@ GameObject:
   - 114: {fileID: 114000014265668988}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Arrow
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,9 +195,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundFX: {fileID: 0}
   damage: 5
-  lengthLimit: 1.5
+  lengthLimit: 0.1
   lengthIncrease: 0.1
-  timerDestroyLimit: 5
+  timerDestroyLimit: 1
 --- !u!135 &135000014114851114
 SphereCollider:
   m_ObjectHideFlags: 1

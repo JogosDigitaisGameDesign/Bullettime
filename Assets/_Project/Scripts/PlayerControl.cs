@@ -57,10 +57,10 @@ public class PlayerControl : MonoBehaviour
         //    timeScale += inputTimeIncrease * 0.01f;
         //}
         //else 
-        //if (inputTimeDecrease > 0)
-        //    timeSense.SetActive(true);
-        //else
-        //    timeSense.SetActive(false);
+        if (inputTimeDecrease > 0)
+            timeSense.SetActive(true);
+        else
+            timeSense.SetActive(false);
 
         if (inputShoot)
             weapon.efetuarDisparo();
