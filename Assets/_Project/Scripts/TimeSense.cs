@@ -45,7 +45,7 @@ public class TimeSense : MonoBehaviour {
         }
         //checkArrow(other, timeScale);
         //checkTrap(other, timeScale);
-        checkEnemy(other, 1.5f);
+        //checkEnemy(other, 1.5f);
 
         //TimeBehaviour tb = other.gameObject.GetComponent<TimeBehaviour>();
         //if (tb != null)
@@ -62,7 +62,7 @@ public class TimeSense : MonoBehaviour {
         TimeInfluenceActivated(other, 1);
         //checkArrow(other, 1);
         //checkTrap(other, 1);
-        checkEnemy(other, 4f);
+        //checkEnemy(other, 4f);
 
         //TimeBehaviour tb = other.gameObject.GetComponent<TimeBehaviour>();
         //if (tb != null)
@@ -72,7 +72,7 @@ public class TimeSense : MonoBehaviour {
     private bool TimeInfluenceActivated(Collider other, float time)
     {
         bool ok = false;
-        if(other.tag != "Enemy")
+        //if(other.tag != "Enemy")
         for (int i = 0; i < tags.Length; i++)
         {
             string auxTag = tags[i];
@@ -134,11 +134,11 @@ public class TimeSense : MonoBehaviour {
     //        other.GetComponent<Door>().TimeInfluence = time;
     //}
 
-    private void checkEnemy(Collider other, float time)
-    {
-        if (other.tag == "Enemy")
-            other.GetComponent<EnemyMov>().moveSpeed = time;
-    }
+    //private void checkEnemy(Collider other, float time)
+    //{
+    //    if (other.tag == "Enemy")
+    //        other.GetComponent<EnemyMov>().moveSpeed = time;
+    //}
 
         //private void checkArrow(Collider other, float time)
         //{

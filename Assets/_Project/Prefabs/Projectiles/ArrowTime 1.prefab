@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundFX: {fileID: 0}
   damage: 3
-  speed: 15
+  speed: 10
   timerDestroy: 5
   permissionRespawn: 1
   directionRespawnPoint: 1

@@ -107,6 +107,8 @@ GameObject:
   - 135: {fileID: 135000012826641396}
   - 114: {fileID: 114000011042313390}
   - 54: {fileID: 54000011427599300}
+  - 114: {fileID: 114000012196775440}
+  - 135: {fileID: 135000010403444558}
   m_Layer: 0
   m_Name: TimeSense
   m_TagString: Bubble
@@ -606,6 +608,8 @@ MonoBehaviour:
     timeIncrease: Time Increase
     timeDecrease: Time Decrease
     activateTimeSense: Activate Time Sense
+  health: 5
+  hitsDamage: 0
   timeSense: {fileID: 114000011042313390}
   fireRate: 1
   lastShot: 0
@@ -658,7 +662,7 @@ MonoBehaviour:
   - Trap
   - Enemy
   - Arrow
-  timeScale: 0.02
+  timeScale: 0.2
   incTime: 0.01
   minTime: 0.1
 --- !u!114 &114000012861845746
@@ -672,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dba39b0002f85742986f1a057d665c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prjPrefab: {fileID: 54000012129049290, guid: 2e53a9648aaa9404190fac21809641a0, type: 2}
+  prjPrefab: {fileID: 54000012129049290, guid: 9b2907e7b54c1d64eb5fdcc3efea1a95, type: 2}
   launchPoint: {fileID: 4000012667285540}
   speed: 30
 --- !u!124 &124000011128403878

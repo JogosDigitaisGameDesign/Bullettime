@@ -4,7 +4,13 @@ using System.Collections;
 public class PlayerControl : MonoBehaviour
 {
 
-    [SerializeField] private GameInput gameInput = new GameInput();
+    [SerializeField]
+    private GameInput gameInput = new GameInput();
+    [SerializeField]
+    private int health = 5;
+    [SerializeField]
+    private int hitsDamage = 0;
+
     private MoveControl moveControl;
     private Weapon weapon;
 
@@ -75,10 +81,23 @@ public class PlayerControl : MonoBehaviour
         {
             //Fire();
         }
-            
+
 
 
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Arrow" || collision.gameObject.tag == "Enemy")
+        {
+            health--;
+            hitsDamage++;
+            if(health <= 0)
+                Destroy(gameObject);
+        }
+    }
+
+
 
     //void Fire()
     //{

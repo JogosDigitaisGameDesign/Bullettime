@@ -6,9 +6,9 @@ public class TrapMoveWall : ITrap
 {
     [SerializeField]
     private Transform wall;
-    [SerializeField]
-    private Transform target;
-    private Vector3 pointA;
+    [SerializeField] private Transform targetPoint;
+    [SerializeField] private Transform returnPoint;
+    //private Vector3 pointA;
 
     [SerializeField]
     private float damage = 1;
@@ -27,7 +27,7 @@ public class TrapMoveWall : ITrap
 
     void Awake()
     {
-        
+        speed = speedGo;
     }
 
 
@@ -35,8 +35,7 @@ public class TrapMoveWall : ITrap
     // Use this for initialization
     void Start()
     {
-        pointA = wall.position;
-        speed = speedGo;
+        
     }
 
     // Update is called once per frame
@@ -45,32 +44,42 @@ public class TrapMoveWall : ITrap
         // Audio
         //executarAudio();
         //Run();
-        if (IsActivated)
-        {
-            if (speed == speedGo)
+        try {
+            if (IsActivated)
             {
-                float distance = Vector3.Distance(wall.position, target.position);
-                if (distance > distanceLimit)
-                    wall.position = Vector3.Lerp(wall.position, target.position, (speed * TimeInfluence) * Time.deltaTime);
-                else
-                    speed = speedReturn;
-            }
-            else
-            {
-                if (autoReturn)
+                if (speed == speedGo)
                 {
-                    float distance = Vector3.Distance(wall.position, pointA);
+                    float distance = Vector3.Distance(wall.localPosition, targetPoint.localPosition);
                     if (distance > distanceLimit)
-                        wall.position = Vector3.Lerp(wall.position, pointA, (speed * TimeInfluence) * Time.deltaTime);
+                        wall.localPosition = Vector3.Lerp(wall.localPosition, targetPoint.localPosition, (speed * TimeInfluence) * Time.deltaTime);
                     else
                     {
-                        speed = speedGo;
-                        IsActivated = false;
+                        wall.localPosition = targetPoint.localPosition;
+                        speed = speedReturn;
                     }
                 }
                 else
-                    IsActivated = false;
+                {
+                    if (autoReturn)
+                    {
+                        float distance = Vector3.Distance(wall.localPosition, returnPoint.localPosition);
+                        if (distance > distanceLimit)
+                            wall.localPosition = Vector3.Lerp(wall.localPosition, returnPoint.localPosition, (speed * TimeInfluence) * Time.deltaTime);
+                        else
+                        {
+                            wall.localPosition = returnPoint.localPosition;
+                            speed = speedGo;
+                            IsActivated = false;
+                        }
+                    }
+                    else
+                        IsActivated = false;
+                }
             }
+        }
+        catch(Exception e)
+        {
+            Debug.Log("Error: " + e.Message + "\n \n " + e.StackTrace + "\n \n " + e.InnerException);
         }
     }
 }
