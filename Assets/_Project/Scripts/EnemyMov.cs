@@ -1,44 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyMov : TimeComponent
+public class EnemyMov : MonoBehaviour
 {
 
     public Transform player;
-    public float MoveSpeed = 4;
-    public int MaxDist = 10;
-    public int MinDist = 5;
-
-    private float moveSpeed = 0;
-
-    public override float TimeInfluence { get { return moveSpeed; }
-        set {
-            if (value == 1)
-                moveSpeed = MoveSpeed;
-            else
-                moveSpeed = value;
-        }
-    }
+    public float moveSpeed = 4;
+    public float MaxDist = 5f;
 
     // Use this for initialization
     void Start()
     {
-        moveSpeed = MoveSpeed;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        base.Update();
-        transform.LookAt(player);
-        if (Vector3.Distance(transform.position, player.position) >= MinDist)
+            
+        if (Vector3.Distance(transform.position, player.position) > MaxDist)
+        {
+            transform.LookAt(player);
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        }
+            
     }
 
     private void OnCollisionExit(Collision collision)
     {
         if(collision.gameObject.tag == "Bubble")
-            moveSpeed = 4;
+            moveSpeed = 4f;
     }
 
     private void OnCollisionEnter(Collision collision)
