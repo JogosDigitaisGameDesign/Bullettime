@@ -5,9 +5,8 @@ public class EnemyMov : MonoBehaviour
 {
 
     public Transform player;
-    public float MoveSpeed = 4;
-    public int MaxDist = 10;
-    public int MinDist = 5;
+    public float moveSpeed = 4;
+    public float MaxDist = 5f;
 
     // Use this for initialization
     void Start()
@@ -18,15 +17,19 @@ public class EnemyMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player);
-        if (Vector3.Distance(transform.position, player.position) >= MinDist)
-            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+            
+        if (Vector3.Distance(transform.position, player.position) > MaxDist)
+        {
+            transform.LookAt(player);
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        }
+            
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
-            MoveSpeed = 4;
+        if(collision.gameObject.tag == "Bubble")
+            moveSpeed = 4f;
     }
 
     private void OnCollisionEnter(Collision collision)

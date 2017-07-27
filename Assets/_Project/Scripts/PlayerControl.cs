@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 
     [SerializeField] private GameInput gameInput = new GameInput();
     private MoveControl moveControl;
+    private Weapon weapon;
 
     private float inputForward = 0;
     private float inputTurn = 0;
@@ -15,10 +16,11 @@ public class PlayerControl : MonoBehaviour
     private float inputTimeIncrease = 0;
     private float inputTimeDecrease = 0;
 
-    public GameObject timeSense = null;
+    public TimeSense timeSense = null;
     private bool inputActivateTimeSense = false;
+    private bool inputShoot = false;
 
-    public GameObject bullet;
+    //public GameObject bullet;
 
     public float fireRate = 1f;
     public float lastShot = 0.0f;
@@ -27,7 +29,8 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         moveControl = GetComponent<MoveControl>();
-        timeSense.SetActive(false);
+        weapon = GetComponent<Weapon>();
+        timeSense.gameObject.SetActive(false);
     }
 
     private void GetInputs()
@@ -39,7 +42,9 @@ public class PlayerControl : MonoBehaviour
         inputRun = gameInput.Run;
         inputTimeIncrease = gameInput.TimeIncrease;
         inputTimeDecrease = gameInput.TimeDecrease;
+
         inputActivateTimeSense = gameInput.ActivateTimeSense;
+        inputShoot = gameInput.Shoot;
     }
 
     // Update is called once per frame
@@ -53,30 +58,36 @@ public class PlayerControl : MonoBehaviour
         //}
         //else 
         if (inputTimeDecrease > 0)
-            timeSense.SetActive(true);
+            timeSense.gameObject.SetActive(true);
         else
-            timeSense.SetActive(false);
+        {
+            //timeSense.Release();
+            timeSense.gameObject.SetActive(false);
+        }
+
+        if (inputShoot)
+            weapon.efetuarDisparo();
 
         moveControl.Jump(inputJump);
         moveControl.Move(inputForward, inputTurn, inputRotationY, inputRun);
 
         if (Input.GetKey(KeyCode.Q))
         {
-            Fire();
+            //Fire();
         }
             
 
 
     }
 
-    void Fire()
-    {
-        if (Time.time > fireRate + lastShot)
-        {
-            Instantiate(bullet, transform.position, Quaternion.identity);
-            lastShot = Time.time;
-        }
-    }
+    //void Fire()
+    //{
+    //    if (Time.time > fireRate + lastShot)
+    //    {
+    //        Instantiate(bullet, transform.position, Quaternion.identity);
+    //        lastShot = Time.time;
+    //    }
+    //}
 
 
     //public void ativarBolha(GameObject timeSense)

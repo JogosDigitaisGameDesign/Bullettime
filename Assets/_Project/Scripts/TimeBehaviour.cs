@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TimeBehaviour : MonoBehaviour
+public class TimeBehaviour : TimeComponent
 {
     private Rigidbody r = null;
     private float _localTimeScale = 1.0f;
@@ -10,7 +10,7 @@ public class TimeBehaviour : MonoBehaviour
     }
 
     
-    public float localTimeScale
+    public override float TimeInfluence
     {
         get
         {
@@ -41,6 +41,11 @@ public class TimeBehaviour : MonoBehaviour
     //        return Time.deltaTime * Time.timeScale * _localTimeScale;
     //    }
     //}
+
+   void Update()
+    {
+        base.Update();
+    }
 
     void FixedUpdate()
     {
