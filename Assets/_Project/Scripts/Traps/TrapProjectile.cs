@@ -10,11 +10,20 @@ public class TrapProjectile : ITrap {
     [SerializeField] private bool directionRespawnPoint = true;
     [SerializeField] private bool touchDestroy = true;
     [SerializeField] private Vector3 arrowDirection = Vector3.forward;
-    
 
+    private TimeBehaviour timeBehaviout = null;
+    
     private float timer = 0;
     private bool isCollided = false;
     private Rigidbody rbody;
+
+    public override float TimeInfluence { get { return base.TimeInfluence; }
+        set {
+            base.TimeInfluence = value;
+            if (timeBehaviout != null)
+                timeBehaviout.TimeInfluence = value;
+        }
+    }
 
     // Use this for initialization
     void Start () {
@@ -57,6 +66,7 @@ public class TrapProjectile : ITrap {
     public override void Begin()
     {
         rbody = GetComponent<Rigidbody>();
+        timeBehaviout = GetComponent<TimeBehaviour>();
 
         IsRespawn = permissionRespawn;
         if (!directionRespawnPoint)

@@ -11,7 +11,7 @@ public class Trapdoor : ITrap {
     [SerializeField] private float speedClose = 1;
     private float speedOp = 3;
     private float speedCl = 1;
-    private float timeInfluence = 1;
+    private float tInfluence = 1;
 
     [SerializeField] private bool isClose = true;
     [SerializeField] private bool manterPortas = true;
@@ -19,10 +19,10 @@ public class Trapdoor : ITrap {
     private float actualAngle = 1;
     private bool closeControl = false;
 
-    public override float TimeInfluence { get { return timeInfluence; }
-        set { timeInfluence = value;
-            speedOp = speedOpen * timeInfluence;
-            speedCl = speedClose * timeInfluence;
+    public override float TimeInfluence { get { return tInfluence; }
+        set { tInfluence = value;
+            speedOp = speedOpen * tInfluence;
+            speedCl = speedClose * tInfluence;
         }
     }
 

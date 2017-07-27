@@ -34,9 +34,9 @@ public class TimeSense : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Trap")
+        if (other.tag == "Arrow")
         {
-            Debug.Log("Trap");
+            Debug.Log("Arrow");
         }
 
         if (TimeInfluenceActivated(other, timeScale))
@@ -55,9 +55,9 @@ public class TimeSense : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
 
-        if (other.tag == "Trap")
+        if (other.tag == "Arrow")
         {
-            Debug.Log("Trap");
+            Debug.Log("Arrow");
         }
         TimeInfluenceActivated(other, 1);
         //checkArrow(other, 1);
@@ -75,7 +75,9 @@ public class TimeSense : MonoBehaviour {
         if(other.tag != "Enemy")
         for (int i = 0; i < tags.Length; i++)
         {
-            if (other.tag == tags[i])
+            string auxTag = tags[i];
+
+            if (other.tag == auxTag)
             {
                 TimeComponent timeComponent = other.GetComponent<TimeComponent>();
 
