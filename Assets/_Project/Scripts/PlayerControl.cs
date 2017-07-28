@@ -4,13 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
+    [SerializeField] private PlayerUI ui;
+    [SerializeField] private GameInput gameInput = new GameInput();
+    [SerializeField] private float healthTotal = 5;
+    [SerializeField] private float health = 5;
+    [SerializeField] private int hitsDamage = 0;
 
-    [SerializeField]
-    private GameInput gameInput = new GameInput();
-    [SerializeField]
-    private int health = 5;
-    [SerializeField]
-    private int hitsDamage = 0;
+    [Header("Timer:")]
+    [SerializeField] private float timerLimit = 2;
+    private float timer = 3f;
+    private bool isCooldown = false;
+    [SerializeField] private bool isCooldownControl = false;
+
 
     private MoveControl moveControl;
     private Weapon weapon;
@@ -41,6 +46,10 @@ public class PlayerControl : MonoBehaviour
         timeSense.gameObject.SetActive(false);
         Time.timeScale = 1;
         restart = false;
+        health = healthTotal;
+        ui.Lifebar = 1;
+        ui.Cooldown = 1;
+        timer = timerLimit;
     }
 
     private void GetInputs()
@@ -67,12 +76,31 @@ public class PlayerControl : MonoBehaviour
         //    timeScale += inputTimeIncrease * 0.01f;
         //}
         //else 
-        if (inputTimeDecrease > 0)
+        if (inputTimeDecrease > 0 && !isCooldown)
+        {
+            timer -= Time.deltaTime;
+            ui.Cooldown = timer / timerLimit;
             timeSense.gameObject.SetActive(true);
+            if (timer <= 0)
+            {
+                timer = 0;
+                ui.Cooldown = 0;
+                isCooldown = true;
+            }
+        }
         else
         {
-            //timeSense.Release();
+            if (!isCooldown && !isCooldownControl)
+                isCooldown = true;
+
+            timer += Time.deltaTime;
+            ui.Cooldown = timer / timerLimit;
             timeSense.gameObject.SetActive(false);
+            if (timer > timerLimit)
+            {
+                timer = timerLimit;
+                isCooldown = false;
+            }
         }
 
         if (inputShoot)
@@ -95,6 +123,8 @@ public class PlayerControl : MonoBehaviour
         if(collision.gameObject.tag == "Arrow" || collision.gameObject.tag == "Enemy")
         {
             health--;
+            ui.Lifebar = health / healthTotal;
+
             hitsDamage++;
             if(health <= 0)
             {

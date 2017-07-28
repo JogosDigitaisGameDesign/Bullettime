@@ -11,17 +11,20 @@ public class TimeSense : MonoBehaviour {
 
     float MoveSpeed = 4f;
     //bool move = true;
-    float timer = 3f;
 
     //private List<TimeComponent> listTimeComponents = new List<TimeComponent>();
 
     // Use this for initialization
     void Start () {
-        
+
     }
 	
 	// Update is called once per frame
 	void Update () {
+        
+
+        
+
         //if(move)
         //    transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 
@@ -34,11 +37,6 @@ public class TimeSense : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Arrow")
-        {
-            Debug.Log("Arrow");
-        }
-
         if (TimeInfluenceActivated(other, timeScale))
         {
             other.GetComponent<TimeComponent>().TimeSense = this;
@@ -55,10 +53,6 @@ public class TimeSense : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
 
-        if (other.tag == "Arrow")
-        {
-            Debug.Log("Arrow");
-        }
         TimeInfluenceActivated(other, 1);
         //checkArrow(other, 1);
         //checkTrap(other, 1);
