@@ -44,8 +44,11 @@ public class PlayerControl : MonoBehaviour
         moveControl = GetComponent<MoveControl>();
         weapon = GetComponent<Weapon>();
         timeSense.gameObject.SetActive(false);
+<<<<<<< Updated upstream
         Time.timeScale = 1;
         restart = false;
+=======
+>>>>>>> Stashed changes
         health = healthTotal;
         ui.Lifebar = 1;
         ui.Cooldown = 1;
