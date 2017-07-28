@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerControl : MonoBehaviour
     private float inputRun = 0;
     private float inputTimeIncrease = 0;
     private float inputTimeDecrease = 0;
+    private bool restart = false;
 
     public TimeSense timeSense = null;
     private bool inputActivateTimeSense = false;
@@ -37,6 +39,7 @@ public class PlayerControl : MonoBehaviour
         moveControl = GetComponent<MoveControl>();
         weapon = GetComponent<Weapon>();
         timeSense.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 
     private void GetInputs()
@@ -93,8 +96,19 @@ public class PlayerControl : MonoBehaviour
             health--;
             hitsDamage++;
             if(health <= 0)
-                Destroy(gameObject);
+            {
+                Time.timeScale = 0;
+                restart = true;
+            }
+               
         }
+    }
+
+    void OnGUI()
+    {
+        if (restart && GUI.Button(new Rect(10, 70, 100, 50), "Restart"))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
 
