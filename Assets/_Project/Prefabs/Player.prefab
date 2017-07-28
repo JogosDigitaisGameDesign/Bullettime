@@ -206,10 +206,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010742775588}
-  m_LocalRotation: {x: 0.5489945, y: -0, z: -0.000000029802319, w: 0.835826}
-  m_LocalPosition: {x: 0.00000023841858, y: 10.9, z: -2.2}
+  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
+  m_LocalPosition: {x: -0, y: 3.5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 66.575005, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000012005822650}
   m_RootOrder: 1
@@ -260,7 +260,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013435106380}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -7.6984377, y: 5, z: 9.59017}
+  m_LocalPosition: {x: -399, y: 5, z: 9.59017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -599,6 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08b1c2c71882484dba754d529f7c33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 0}
   gameInput:
     forward: Vertical
     turn: Horizontal
@@ -608,8 +609,11 @@ MonoBehaviour:
     timeIncrease: Time Increase
     timeDecrease: Time Decrease
     activateTimeSense: Activate Time Sense
+  healthTotal: 100
   health: 5
   hitsDamage: 0
+  timerLimit: 5
+  isCooldownControl: 1
   timeSense: {fileID: 114000011042313390}
   fireRate: 1
   lastShot: 0
