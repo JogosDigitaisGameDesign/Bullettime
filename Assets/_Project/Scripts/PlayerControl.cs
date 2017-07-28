@@ -40,6 +40,7 @@ public class PlayerControl : MonoBehaviour
         weapon = GetComponent<Weapon>();
         timeSense.gameObject.SetActive(false);
         Time.timeScale = 1;
+        restart = false;
     }
 
     private void GetInputs()
@@ -106,7 +107,7 @@ public class PlayerControl : MonoBehaviour
 
     void OnGUI()
     {
-        if (restart && GUI.Button(new Rect(10, 70, 100, 50), "Restart"))
+        if (restart && GUI.Button(new Rect(300, 70, 100, 50), "Restart"))
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
